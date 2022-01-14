@@ -1,0 +1,35 @@
+<app-titre titre="Gestion des catégories" vignette="Liste"></app-titre>
+
+<a class="btn btn-primary" [routerLink]="['/category/add']">
+  + Créer une catégorie
+</a>
+
+<table class="table-striped table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th>Modifier</th>
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elem of liste; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ elem.nom }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-sm"
+          [routerLink]="['/category/update/' + elem.id]"
+        >
+          Modifier
+        </button>
+      </td>
+      <td>
+        <button (click)="delete(elem.id)" class="btn btn-danger btn-sm">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
